@@ -27,9 +27,8 @@ export default function App() {
     '=',
   ];
 
-  const [currentNumber, setCurrentNumber] = useState("")
-  const [lastNumber, setLastNumber] = useState("")
-
+  const [currentNumber, setCurrentNumber] = useState('');
+  const [lastNumber, setLastNumber] = useState('');
 
   function calculator() {
     const splitNumbers = currentNumber.split(' ');
