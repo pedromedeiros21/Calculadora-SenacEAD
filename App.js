@@ -37,19 +37,19 @@ export default function App() {
     const operator = splitNumbers[1];
 
     // Faz ação referente tecla pressionada
-    switch(operator){
+    switch (operator) {
       case '+':
-        setCurrentNumber((fistNumber + lastNumber).toString())
-        return
-      case '-': 
-        setCurrentNumber((fistNumber - lastNumber).toString())
-        return
+        setCurrentNumber((fistNumber + lastNumber).toString());
+        return;
+      case '-':
+        setCurrentNumber((fistNumber - lastNumber).toString());
+        return;
       case 'x':
-        setCurrentNumber((fistNumber + lastNumber).toString())
-        return
-      case '/': 
-        setCurrentNumber((fistNumber - lastNumber).toString())
-        return
+        setCurrentNumber((fistNumber + lastNumber).toString());
+        return;
+      case '/':
+        setCurrentNumber((fistNumber - lastNumber).toString());
+        return;
     }
   }
 
