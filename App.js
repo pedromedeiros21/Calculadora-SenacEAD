@@ -63,25 +63,24 @@ export default function App() {
       setCurrentNumber(currentNumber + ' ' + buttonPressed + ' ');
       return;
     }
-    switch(buttonPressed){
+    switch (buttonPressed) {
       case 'DEL':
-        setCurrentNumber(currentNumber.substring(0, (currentNumber.length - 2)))
-        return
+        setCurrentNumber(currentNumber.substring(0, currentNumber.length - 2));
+        return;
       case 'LIMPAR': // Limpa todo o conteúdo
-        setLastNumber("") 
-        setCurrentNumber("") 
-        return
+        setLastNumber('');
+        setCurrentNumber('');
+        return;
       case '=':
-        setLastNumber(currentNumber + " = ")
-        calculator()
-        return
+        setLastNumber(currentNumber + ' = ');
+        calculator();
+        return;
       case '+/-':
-        return
+        return;
     }
 
-    setCurrentNumber(currentNumber + buttonPressed)
+    setCurrentNumber(currentNumber + buttonPressed);
   }
-
 
   return (
     <View style={styles.container}>
