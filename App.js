@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
@@ -9,9 +10,9 @@ export default function App() {
     'DEL',
     '%',
     '/',
-    7,
-    8,
     9,
+    8,
+    7,
     'x',
     6,
     5,
@@ -33,6 +34,7 @@ export default function App() {
   function calculator() {
     const splitNumbers = currentNumber.split(' ');
     const fistNumber = parseFloat(splitNumbers[0]);
+    // eslint-disable-next-line no-shadow
     const lastNumber = parseFloat(splitNumbers[2]);
     const operator = splitNumbers[1];
 
@@ -45,10 +47,10 @@ export default function App() {
         setCurrentNumber((fistNumber - lastNumber).toString());
         return;
       case 'x':
-        setCurrentNumber((fistNumber + lastNumber).toString());
+        setCurrentNumber((fistNumber * lastNumber).toString());
         return;
       case '/':
-        setCurrentNumber((fistNumber - lastNumber).toString());
+        setCurrentNumber((fistNumber / lastNumber).toString());
         return;
     }
   }
@@ -56,9 +58,10 @@ export default function App() {
   function handleInput(buttonPressed) {
     console.log(buttonPressed); // Mostra no Console a tecla pressionada
     if (
-      (buttonPressed === '+')(buttonPressed === '-')(buttonPressed === 'x')(
-        buttonPressed === '/',
-      )
+      buttonPressed === '+' ||
+      buttonPressed === '-' ||
+      buttonPressed === 'x' ||
+      buttonPressed === '/'
     ) {
       setCurrentNumber(currentNumber + ' ' + buttonPressed + ' ');
       return;
