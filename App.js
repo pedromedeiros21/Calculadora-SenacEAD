@@ -79,6 +79,8 @@ export default function App() {
         calculator();
         return;
       case '+/-':
+        var change = currentNumber * -1;
+          isNaN(change) ? Alert.alert("Invalid Format") : setCurrentNumber(change);
         return;
     }
 
