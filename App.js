@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
@@ -9,9 +10,9 @@ export default function App() {
     'DEL',
     '%',
     '/',
-    7,
-    8,
     9,
+    8,
+    7,
     'x',
     6,
     5,
@@ -33,6 +34,7 @@ export default function App() {
   function calculator() {
     const splitNumbers = currentNumber.split(' ');
     const fistNumber = parseFloat(splitNumbers[0]);
+    // eslint-disable-next-line no-shadow
     const lastNumber = parseFloat(splitNumbers[2]);
     const operator = splitNumbers[1];
 
@@ -45,10 +47,10 @@ export default function App() {
         setCurrentNumber((fistNumber - lastNumber).toString());
         return;
       case 'x':
-        setCurrentNumber((fistNumber + lastNumber).toString());
+        setCurrentNumber((fistNumber * lastNumber).toString());
         return;
       case '/':
-        setCurrentNumber((fistNumber - lastNumber).toString());
+        setCurrentNumber((fistNumber / lastNumber).toString());
         return;
     }
   }
@@ -56,16 +58,17 @@ export default function App() {
   function handleInput(buttonPressed) {
     console.log(buttonPressed); // Mostra no Console a tecla pressionada
     if (
-      (buttonPressed === '+')(buttonPressed === '-')(buttonPressed === 'x')(
-        buttonPressed === '/',
-      )
+      buttonPressed === '+' ||
+      buttonPressed === '-' ||
+      buttonPressed === 'x' ||
+      buttonPressed === '/'
     ) {
       setCurrentNumber(currentNumber + ' ' + buttonPressed + ' ');
       return;
     }
     switch (buttonPressed) {
       case 'DEL':
-        setCurrentNumber(currentNumber.substring(0, currentNumber.length - 2));
+        setCurrentNumber(currentNumber.substring(0, currentNumber.length - 1));
         return;
       case 'LIMPAR': // Limpa todo o conteúdo
         setLastNumber('');
@@ -76,6 +79,8 @@ export default function App() {
         calculator();
         return;
       case '+/-':
+        var change = currentNumber * -1;
+          isNaN(change) ? Alert.alert("Invalid Format") : setCurrentNumber(change);
         return;
     }
 
@@ -97,7 +102,7 @@ export default function App() {
             <TouchableOpacity
               onPress={() => handleInput(button)}
               key={button}
-              style={[styles.button, {backgroundColor: '#3dd0e3'}]}>
+              style={[styles.button, {backgroundColor: '#1e0033'}]}>
               <Text style={[styles.textButton, {color: 'white', fontSize: 30}]}>
                 {button}
               </Text>
@@ -111,7 +116,7 @@ export default function App() {
               <Text
                 style={[
                   styles.textButton,
-                  {color: typeof button === 'number' ? 'black' : '#0093a6'},
+                  {color: typeof button === 'number' ? 'white' : 'gray'},
                 ]}>
                 {button}
               </Text>
@@ -131,17 +136,17 @@ const styles = StyleSheet.create({
   results: {
     flex: 2,
     justifyContent: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#1e0033',
   },
   resultText: {
-    color: '#282F38',
+    color: 'white',
     fontSize: 32,
     fontWeight: 'bold',
     padding: 12,
     textAlign: 'right',
   },
   historyText: {
-    color: '#7c7c7c',
+    color: 'gray',
     fontSize: 20,
     marginRight: 10,
     alignSelf: 'flex-end',
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   button: {
-    backgroundColor: 'white',
+    backgroundColor: '#4b0082',
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 90,
